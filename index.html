@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCam Motion Capture Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Main 3D Scene Container -->
+        <div id="scene-container"></div>
+
+        <!-- UI Overlay -->
+        <div id="ui-layer">
+            <!-- Header -->
+            <header>
+                <div class="logo">
+                    <span class="logo-icon">✨</span>
+                    <h1>Motion<span>Pro</span></h1>
+                </div>
+                <div class="status-indicators">
+                    <div id="status-tracking" class="status-dot"></div>
+                    <span id="status-text">Tracking Off</span>
+                </div>
+            </header>
+
+            <!-- Tracking Monitor (Camera View) -->
+            <div id="tracking-monitor" class="glass-panel">
+                <video id="webcam" autoplay playsinline></video>
+                <canvas id="tracking-canvas"></canvas>
+                <div class="monitor-label">WebCam Monitor</div>
+            </div>
+
+            <!-- Control Panel -->
+            <aside id="control-panel" class="glass-panel">
+                <section>
+                    <h3>Model Settings</h3>
+                    <div class="control-group">
+                        <label>Avatar</label>
+                        <button id="load-vrm" class="primary-btn">Load Custom VRM</button>
+                    </div>
+                    <div class="control-group">
+                        <label>Calibration</label>
+                        <button id="calibrate-btn" class="secondary-btn">Recenter Avatar</button>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Tracking Options</h3>
+                    <div class="control-toggle">
+                        <span>Face Tracking</span>
+                        <input type="checkbox" id="toggle-face" checked>
+                    </div>
+                    <div class="control-toggle">
+                        <span>Body Tracking</span>
+                        <input type="checkbox" id="toggle-body" checked>
+                    </div>
+                    <div class="control-toggle">
+                        <span>Hand Tracking</span>
+                        <input type="checkbox" id="toggle-hands" checked>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Smoothing</h3>
+                    <input type="range" id="smoothing-slider" min="0" max="1" step="0.1" value="0.5">
+                </section>
+                
+                <div class="footer-controls">
+                    <button id="start-btn" class="action-btn start">Start Capture</button>
+                    <button id="stop-btn" class="action-btn stop hidden">Stop Capture</button>
+                </div>
+            </aside>
+            
+            <!-- Loading Indicator -->
+             <div id="loading-overlay" class="hidden">
+                <div class="loader"></div>
+                <p>Initializing AI Engines...</p>
+             </div>
+        </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
